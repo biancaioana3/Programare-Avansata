@@ -18,7 +18,7 @@ class HelloWorld {
                 sum = 0;
             }
         }
-        System.out.println("Willy-nilly, this semester I will learn " + sum);
+        System.out.println("Willy-nilly, this semester I will learn " + languages[sum]);
 
     }
 }

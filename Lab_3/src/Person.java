@@ -39,8 +39,8 @@ public class Person implements Comparable<Person>, Node {
     public int compareTo(Person o) {
         return this.name.compareTo(o.getName());
     }
-/**
- * @compareTo return 0 if the person objects are equal
- */
+    /**
+     * @compareTo return 0 if the person objects are equal
+     */
 
 }

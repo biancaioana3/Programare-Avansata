@@ -1,40 +1,32 @@
-import java.util.Objects;
+package Homework.src;
 
 public class Location {
     private String name;
-    private String location;
-    private float lenght;
+    private String type;
     private int x;
     private int y;
 
-    public Location(String name, int x, int y, String location, float lenght){
+    public Location(String name, String type, int x, int y){
         this.name=name;
+        this.type=type;
         this.x=x;
         this.y=y;
-        this.location=location;
-        this.lenght=lenght;
-    }
-    public float getLenght() {
-        return lenght;
     }
 
-    public void setLenght(float lenght) {
-        this.lenght = lenght;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setCountry(String location) {
-        this.location = location;
-    }
     public String getName() {
         return name;
     }
 
     public void setName(String newName) {
         this.name = newName;
+    }
+
+    public String getType(){
+        return type;
+    }
+
+    public void setType(String type){
+        this.type = type;
     }
 
     public int getX(){
@@ -57,29 +49,10 @@ public class Location {
     public String toString() {
         return "Location{" +
                 "name='" + name + '\'' +
+                ", type=" + type +
                 ", x=" + x +
                 ", y=" + y +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null)
-            return false;
-        if (!(obj instanceof Location))
-            return false;
-        Location comp = (Location) obj;
-        return ( comp.name==name && comp.x==x && comp.y==y);
-        //return super.equals(obj);
-    }
-
-    public double distanceTo(Location other) {
-        double dx = x - other.getX();
-        double dy = y - other.getY();
-        return Math.sqrt(dx*dx + dy*dy);
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, x, y);
-    }
 }

@@ -1,3 +1,5 @@
+package Homework.src;
+
 public class GasStations extends Location{
     private String name;
     private String location;
@@ -5,8 +7,8 @@ public class GasStations extends Location{
     private int x;
     private int y;
 
-    public GasStations(String name, int x, int y, String location, float lenght) {
-        super(name, x, y, location, lenght);
-    }
 
+    public GasStations(String name, String type, int x, int y) {
+        super(name, type, x, y);
+    }
 }

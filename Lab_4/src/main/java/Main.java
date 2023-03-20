@@ -21,12 +21,12 @@ public class Main {
         Project p1 = new Project("P1");
         Project p2 = new Project("P2");
 
-        List<Student> students = new LinkedList<>(Arrays.asList(s0, s1, s2));
+        TreeSet<Student> students = new TreeSet<>(Arrays.asList(s0, s1, s2));
         students.stream()
                 .sorted()
                 .forEach(s -> System.out.println(s.getName()));
 
-        Set<Project> projects = new TreeSet<>(Arrays.asList(p0, p1, p2));
+        TreeSet<Project> projects = new TreeSet<>(Arrays.asList(p0, p1, p2));
         projects.stream()
                 .sorted()
                 .forEach(p -> System.out.println(p.getName()));

@@ -1,52 +1,49 @@
+package Homework.src;
+
 import java.util.Objects;
 
 public class Road {
+    private String type;
     private int lenght;
-    private int speedLimit;
+    private int speed_limit;
 
-    public Road( int lenght, int speend_limit){
 
+    public Road(String type, int lenght, int speend_limit){
+
+        this.type=type;
         this.lenght=lenght;
-        this.speedLimit=speend_limit;
+        this.speed_limit=speend_limit;
+    }
+    public String getType() {
+        return type;
     }
 
-    public int getLenght(){
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public int getLength(){
         return lenght;
     }
 
-    public void setLenght(int len){
+    public void setLength(int len){
         this.lenght = len;
     }
-    public int getSpeedLimit(){
-        return speedLimit;
+    public int getSpeed_limit(){
+        return speed_limit;
     }
-    public void setSpeedLimit(int speed){
-        this.speedLimit=speed;
+    public void setSpeed_limit(int speed){
+        this.speed_limit=speed;
     }
 
     @Override
     public String toString() {
         return "Road{" +
-                "lenght=" + lenght +
-                ", speedLimit=" + speedLimit +
+                "type=" + type +
+                ", lenght=" + lenght +
+                ", speed_limit=" + speed_limit +
                 '}';
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null)
-            return false;
-        if (!(obj instanceof Road))
-            return false;
-        Road comp = (Road) obj;
-        return ( comp.lenght==lenght);
-        //return super.equals(obj);
-    }
-    public double getTravelTime() {
-        return lenght / speedLimit;
-    }
-    @Override
-    public int hashCode() {
-        return Objects.hash(lenght, speedLimit);
-    }
+
 }

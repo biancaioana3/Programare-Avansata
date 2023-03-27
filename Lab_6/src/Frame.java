@@ -39,40 +39,53 @@ public class Frame extends JFrame {
         submitDots.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String text = dots.getText();
-                int dotsNumber = Integer.parseInt(text);
-//                System.out.println(dotsNumber);
+                String dotsN = dots.getText();
+                int dotsNumber = Integer.parseInt(dotsN);
+                String linesN = lines.getText();
+                int linesNumber = Integer.parseInt(linesN);
                 panel.getGraphics().clearRect(0, 0, panel.getWidth(), panel.getHeight());
-                int x = 10;
-                for(int i=0; i < dotsNumber; i++){
+
+                // Calculeaza coordonatele centrale ale panel-ului
+                int centerX = panel.getWidth() / 2;
+                int centerY = panel.getHeight() / 2;
+
+                // Calculeaza raza cercului in care sunt pozitionate nodurile
+                int radius = Math.min(centerX, centerY) * 3 / 4;
+
+                // Calculeaza unghiul dintre doua noduri adiacente
+                double angleStep = 2 * Math.PI / dotsNumber;
+
+                // Deseneaza nodurile
+                for (int i = 0; i < dotsNumber; i++) {
+                    double angle = i * angleStep;
+                    int x = (int) Math.round(centerX + radius * Math.cos(angle));
+                    int y = (int) Math.round(centerY + radius * Math.sin(angle));
                     Graphics dot = panel.getGraphics();
-                    dot.drawOval(x,10,5,5);
-                    x +=10;
+                    dot.drawOval(x, y, 5, 5);
                 }
-            }
-        });
-        submiLines.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String text = lines.getText();
-                int linesNumber = Integer.parseInt(text);
-//                System.out.println(linesNumber);
-                panel.getGraphics().clearRect(0, 0, panel.getWidth(), panel.getHeight());
-                int x1 = 10;
-                for(int i=0; i < linesNumber; i++){
+
+                // Deseneaza muchiile
+                for (int i = 0; i < linesNumber; i++) {
+                    int node1 = (int) Math.floor(Math.random() * dotsNumber);
+                    int node2 = (int) Math.floor(Math.random() * dotsNumber);
+                    double angle1 = node1 * angleStep;
+                    double angle2 = node2 * angleStep;
+                    int x1 = (int) Math.round(centerX + radius * Math.cos(angle1));
+                    int y1 = (int) Math.round(centerY + radius * Math.sin(angle1));
+                    int x2 = (int) Math.round(centerX + radius * Math.cos(angle2));
+                    int y2 = (int) Math.round(centerY + radius * Math.sin(angle2));
                     Graphics line = panel.getGraphics();
-                    line.drawLine(10 +x1,10,200+x1,200);
-                    x1 +=10;
+                    line.drawLine(x1, y1, x2, y2);
                 }
             }
         });
+
         formPanel.add(lableDots);
         formPanel.add(dots());
-        formPanel.add(submitDots);
         this.lableLines = new JLabel("Nr. de linii");
         formPanel.add(lableLines);
         formPanel.add(lines());
-        formPanel.add(submiLines);
+        formPanel.add(submitDots);
         add(formPanel, BorderLayout.NORTH);
         buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
         buttonPanel.setBackground(Color.PINK);

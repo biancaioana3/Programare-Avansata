@@ -10,16 +10,21 @@ public class StudentProjectAllocation {
 
     private List<Student> students;
     private List<Project> projects;
+    public StudentProjectAllocation() {
+
+    }
+    public StudentProjectAllocation(List<Student> students) {
+        this.students = students;
+
+    }
 
     public String getRandom() {
         Faker faker = new Faker();
 
-        String name = faker.name().fullName(); // Miss Samanta Schmidt
-        String firstName = faker.name().firstName(); // Emory
+        String firstName = faker.name().firstName();
 
         return firstName;
     }
-
 
     public List<Student> getStudents() {
         return students;

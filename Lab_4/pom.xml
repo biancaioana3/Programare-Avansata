@@ -30,5 +30,10 @@
             <artifactId>faker</artifactId>
             <version>1.4.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.jwebmp.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>0.66.0.1</version>
+        </dependency>
     </dependencies>
 </project>

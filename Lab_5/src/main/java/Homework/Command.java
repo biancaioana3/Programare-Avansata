@@ -1,5 +1,5 @@
 package Homework;
 
-interface Command {
-    void execute() throws InvalidDataException, InvalidCommandException;
+public interface Command {
+    void execute() throws Exception;
 }

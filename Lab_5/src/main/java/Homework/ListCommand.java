@@ -2,23 +2,17 @@ package Homework;
 
 import java.util.List;
 
-class ListCommand implements Command {
-    private List<Document> documents;
+public class ListCommand implements Command {
+    private DocumentCatalog catalog;
 
-    public ListCommand(List<Document> documents) {
-        this.documents = documents;
+    public ListCommand(DocumentCatalog catalog) {
+        this.catalog = catalog;
     }
 
-    @Override
-    public void execute() throws InvalidDataException, InvalidCommandException {
-        if (documents.isEmpty()) {
-            System.out.println("The catalog is empty.");
-            return;
-        }
-
-        System.out.printf("%-10s | %-50s | %-50s | %-50s | %s\n", "ID", "Name", "Path", "URL", "Tags");
-        for (Document doc : documents) {
-            System.out.printf("%-10s | %-50s | %-50s | %-50s | %s\n", doc.getId(), doc.getName(), doc.getPath(), doc.getUrl(), doc.getTags());
+    public void execute() throws Exception {
+        List<Document> documents = catalog.getAllDocuments();
+        for (Document document : documents) {
+            System.out.println(document.getId() + ": " + document.getName());
         }
     }
 }

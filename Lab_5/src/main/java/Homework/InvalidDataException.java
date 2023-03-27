@@ -1,7 +1,8 @@
 package Homework;
 
-class InvalidDataException extends Exception {
+public class InvalidDataException extends Exception {
     public InvalidDataException(String message) {
         super(message);
     }
 }
+

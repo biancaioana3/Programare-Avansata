@@ -43,6 +43,7 @@ public class Frame extends JFrame {
                 int dotsNumber = Integer.parseInt(dotsN);
                 String linesN = lines.getText();
                 int linesNumber = Integer.parseInt(linesN);
+
                 panel.getGraphics().clearRect(0, 0, panel.getWidth(), panel.getHeight());
 
                 // Calculeaza coordonatele centrale ale panel-ului
@@ -64,10 +65,10 @@ public class Frame extends JFrame {
                     dot.drawOval(x, y, 5, 5);
                 }
 
-                // Deseneaza muchiile
-                for (int i = 0; i < linesNumber; i++) {
-                    int node1 = (int) Math.floor(Math.random() * dotsNumber);
-                    int node2 = (int) Math.floor(Math.random() * dotsNumber);
+                // Deseneaza muchiile intre noduri
+                for (int i = 0; i < dotsNumber; i++) {
+                    int node1 = i;
+                    int node2 = (i + 1) % dotsNumber;
                     double angle1 = node1 * angleStep;
                     double angle2 = node2 * angleStep;
                     int x1 = (int) Math.round(centerX + radius * Math.cos(angle1));
@@ -77,6 +78,27 @@ public class Frame extends JFrame {
                     Graphics line = panel.getGraphics();
                     line.drawLine(x1, y1, x2, y2);
                 }
+
+                // Deseneaza muchiile suplimentare
+                int extraLines = linesNumber - dotsNumber;
+                for (int i = 0; i < extraLines; i++) {
+                    int node1 = (int) Math.floor(Math.random() * dotsNumber);
+                    int node2 = (int) Math.floor(Math.random() * dotsNumber);
+                    while (node1 == node2) {
+                        node2 = (int) Math.floor(Math.random() * dotsNumber);
+                    }
+                    double angle1 = node1 * angleStep;
+                    double angle2 = node2 * angleStep;
+                    int x1 = (int) Math.round(centerX + radius * Math.cos(angle1));
+                    int y1 = (int) Math.round(centerY + radius * Math.sin(angle1));
+                    int x2 = (int) Math.round(centerX + radius * Math.cos(angle2));
+                    int y2 = (int) Math.round(centerY + radius * Math.sin(angle2));
+                    Graphics line = panel.getGraphics();
+                    line.drawLine(x1, y1, x2, y2);
+                }
+
+
+
             }
         });
 

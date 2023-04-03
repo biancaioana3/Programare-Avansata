@@ -2,23 +2,23 @@ package Homework;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-//        DocumentManagementSystem dms = new DocumentManagementSystem();
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-//
-//        while (true) {
-//            System.out.print("> ");
-//            String line = reader.readLine().trim();
-//
-//            if (line.equalsIgnoreCase("exit")) {
-//                break;
-//            }
-//
-//            try {
-//                dms.executeCommand(line);
-//            } catch (InvalidCommandException | InvalidDataException e) {
-//                System.out.println(e.getMessage());
-//            }
-//        }
+
+        Catalog catalog= new Catalog();
+        Document doc1 = new Document("1", "Document 1","C:\\Users\\bianc\\Desktop\\materiale facultate\\Programare Avansata");
+        Document doc2 = new Document("2", "Document 2","C:\\Users\\bianc\\Desktop\\materiale facultate\\Programare Avansata");
+        catalog.addDocument(doc1);
+        catalog.addDocument(doc2);
+
+        Command addCommand = new AddCommand(catalog, "1", "ADD","C:\\Users\\bianc\\Desktop\\materiale facultate\\Programare Avansata");
+        Command listCommand = new ListCommand(catalog);
+        Command viewCommand = new ViewCommand(catalog,"1");
+        Command reportCommand = new ReportCommand(catalog, "C:\\Users\\bianc\\Desktop\\materiale facultate\\Programare Avansata");
+
+        addCommand.execute();
+        listCommand.execute();
+        viewCommand.execute();
+        reportCommand.execute();
+
     }
 }
 

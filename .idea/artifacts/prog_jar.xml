@@ -1,0 +1,43 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="prog:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/prog_jar</output-path>
+    <root id="archive" name="prog.jar">
+      <element id="module-output" name="lab_1" />
+      <element id="module-output" name="lab_2" />
+      <element id="module-output" name="Lab_3" />
+      <element id="module-output" name="Lab_4" />
+      <element id="module-output" name="Lab_5" />
+      <element id="module-output" name="Lab_6" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/jwebmp/jackson/core/jackson-annotations/0.66.0.1/jackson-annotations-0.66.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/j2objc/j2objc-annotations/1.1/j2objc-annotations-1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-assistedinject/4.2.2/guice-assistedinject-4.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/xellitix/commons/jackson-utils/0.2.0/jackson-utils-0.2.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/javax/inject/javax.inject/1/javax.inject-1.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: com.github.lzyzsd.randomcolor:library:1.0.0" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.9.9/jackson-dataformat-yaml-2.9.9.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-annotations/2.14.2/jackson-annotations-2.14.2.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: com.github.thiagokimo:faker:1.4.3" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/jwebmp/jackson/core/jackson-databind/0.66.0.1/jackson-databind-0.66.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/checkerframework/checker-compat-qual/2.0.0/checker-compat-qual-2.0.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-core/2.14.2/jackson-core-2.14.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/aopalliance/aopalliance/1.0/aopalliance-1.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/errorprone/error_prone_annotations/2.1.3/error_prone_annotations-2.1.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/lbovolini/ObjectMapper/0.2.3/ObjectMapper-0.2.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/inject/extensions/guice-multibindings/4.2.2/guice-multibindings-4.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/github/javafaker/javafaker/1.0.2/javafaker-1.0.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.14.2/jackson-databind-2.14.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/yaml/snakeyaml/1.23/snakeyaml-1.23-android.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/jwebmp/jackson/core/jackson-core/0.66.0.1/jackson-core-0.66.0.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/guava/guava/25.1-android/guava-25.1-android.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/xellitix/commons/net/0.3.0/net-0.3.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/yaml/snakeyaml/1.23/snakeyaml-1.23.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/google/inject/guice/4.2.2/guice-4.2.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

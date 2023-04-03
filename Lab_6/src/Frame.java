@@ -66,6 +66,7 @@ public class Frame extends JFrame {
                 }
 
                 // Deseneaza muchiile intre noduri
+
                 for (int i = 0; i < dotsNumber; i++) {
                     int node1 = i;
                     int node2 = (i + 1) % dotsNumber;
@@ -77,7 +78,9 @@ public class Frame extends JFrame {
                     int y2 = (int) Math.round(centerY + radius * Math.sin(angle2));
                     Graphics line = panel.getGraphics();
                     line.drawLine(x1, y1, x2, y2);
+
                 }
+
 
                 // Deseneaza muchiile suplimentare
                 int extraLines = linesNumber - dotsNumber;

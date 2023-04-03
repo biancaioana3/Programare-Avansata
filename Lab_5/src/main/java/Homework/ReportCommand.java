@@ -11,16 +11,16 @@ import java.util.List;
 import java.util.Map;
 
 public class ReportCommand implements Command {
-    private DocumentCatalog catalog;
+    private Catalog catalog;
     private String outputFilePath;
 
-    public ReportCommand(DocumentCatalog catalog, String outputFilePath) {
+    public ReportCommand(Catalog catalog, String outputFilePath) {
         this.catalog = catalog;
         this.outputFilePath = outputFilePath;
     }
 
     public void execute() throws Exception {
-        List<Document> documents = catalog.getAllDocuments();
+        List<Document> documents = catalog.getDocuments();
 
         Configuration cfg = new Configuration(Configuration.VERSION_2_3_28);
         cfg.setClassLoaderForTemplateLoading(getClass().getClassLoader(), "templates");

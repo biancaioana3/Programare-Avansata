@@ -1,0 +1,220 @@
+package Homework;
+
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+public class Frame extends JFrame {
+    private JPanel formPanel = new JPanel();
+    private JPanel panel = new JPanel();
+    private JPanel buttonPanel = new JPanel();
+    private Button submitDots =  new Button("Submit");
+    private Button submiLines =  new Button("Submit");
+    private Button exit = new Button("Exit");
+    private Button load = new Button("Load");
+    private Button save = new Button("Save");
+    private JLabel lableDots ;
+    private JLabel lableLines ;
+
+    private JTextField dots;
+    private JTextField lines;
+    public Frame(){
+        initialize();
+    }
+    public JTextField dots (){
+        this.dots = new JTextField(10);
+        return this.dots;
+    }
+
+    public JTextField lines (){
+        this.lines = new JTextField(10);
+        return this.lines;
+    }
+    public void initialize(){
+        setTitle("Graphical User Interfaces");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setSize(800, 600);
+        formPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+        formPanel.setBackground(Color.PINK);
+        this.lableDots = new JLabel("Nr. de puncte");
+        submitDots.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String dotsN = dots.getText();
+                int dotsNumber = Integer.parseInt(dotsN);
+                String linesN = lines.getText();
+                int linesNumber = Integer.parseInt(linesN);
+
+                panel.getGraphics().clearRect(0, 0, panel.getWidth(), panel.getHeight());
+
+                // Calculeaza coordonatele centrale ale panel-ului
+                int centerX = panel.getWidth() / 2;
+                int centerY = panel.getHeight() / 2;
+
+                // Calculeaza raza cercului in care sunt pozitionate nodurile
+                int radius = Math.min(centerX, centerY) * 3 / 4;
+
+                // Calculeaza unghiul dintre doua noduri adiacente
+                double angleStep = 2 * Math.PI / dotsNumber;
+
+                // Deseneaza nodurile
+                for (int i = 0; i < dotsNumber; i++) {
+                    double angle = i * angleStep;
+                    int x = (int) Math.round(centerX + radius * Math.cos(angle));
+                    int y = (int) Math.round(centerY + radius * Math.sin(angle));
+                    Graphics dot = panel.getGraphics();
+                    dot.drawOval(x, y, 5, 5);
+                }
+
+                // Deseneaza muchiile intre noduri
+
+                for (int i = 0; i < dotsNumber; i++) {
+                    int node1 = i;
+                    int node2 = (i + 1) % dotsNumber;
+                    double angle1 = node1 * angleStep;
+                    double angle2 = node2 * angleStep;
+                    int x1 = (int) Math.round(centerX + radius * Math.cos(angle1));
+                    int y1 = (int) Math.round(centerY + radius * Math.sin(angle1));
+                    int x2 = (int) Math.round(centerX + radius * Math.cos(angle2));
+                    int y2 = (int) Math.round(centerY + radius * Math.sin(angle2));
+                    Graphics line = panel.getGraphics();
+                    line.drawLine(x1, y1, x2, y2);
+
+                }
+
+
+                // Deseneaza muchiile suplimentare
+                int extraLines = linesNumber - dotsNumber;
+                for (int i = 0; i < extraLines; i++) {
+                    int node1 = (int) Math.floor(Math.random() * dotsNumber);
+                    int node2 = (int) Math.floor(Math.random() * dotsNumber);
+                    while (node1 == node2) {
+                        node2 = (int) Math.floor(Math.random() * dotsNumber);
+                    }
+                    double angle1 = node1 * angleStep;
+                    double angle2 = node2 * angleStep;
+                    int x1 = (int) Math.round(centerX + radius * Math.cos(angle1));
+                    int y1 = (int) Math.round(centerY + radius * Math.sin(angle1));
+                    int x2 = (int) Math.round(centerX + radius * Math.cos(angle2));
+                    int y2 = (int) Math.round(centerY + radius * Math.sin(angle2));
+                    Graphics line = panel.getGraphics();
+                    line.drawLine(x1, y1, x2, y2);
+                }
+
+
+
+            }
+        });
+
+        formPanel.add(lableDots);
+        formPanel.add(dots());
+        this.lableLines = new JLabel("Nr. de linii");
+        formPanel.add(lableLines);
+        formPanel.add(lines());
+        formPanel.add(submitDots);
+        add(formPanel, BorderLayout.NORTH);
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+        buttonPanel.setBackground(Color.PINK);
+        buttonPanel.add(save);
+        save.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    // create a BufferedImage to store the contents of the drawingPanel
+                    BufferedImage image = new BufferedImage(panel.getWidth(), panel.getHeight(), BufferedImage.TYPE_INT_RGB);
+                    Graphics2D g2 = image.createGraphics();
+                    panel.printAll(g2);
+                    g2.dispose();
+
+                    // save the image as a PNG file
+                    File file = new File("gameboard.png");
+                    ImageIO.write(image, "png", file);
+                    JOptionPane.showMessageDialog(null, "Game board image saved to file: " + file.getAbsolutePath(), "Image saved", JOptionPane.INFORMATION_MESSAGE);
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Failed to save image: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        load.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loadImage();
+            }
+        });
+        buttonPanel.add(exit);
+        buttonPanel.add(load);
+        add(buttonPanel, BorderLayout.SOUTH);
+        panel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
+        add(panel, BorderLayout.CENTER);
+
+        setLocationRelativeTo(null);
+        setResizable(false);
+
+        setVisible(true);
+    }
+
+    private void saveImage() {
+        try {
+            // Obțineți o referință la panoul care conține desenul
+            Component content = getContentPane().getComponent(2);
+
+            // Creează o imagine tampon pentru a desena panoul pe ea
+            BufferedImage image = new BufferedImage(content.getWidth(), content.getHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2d = image.createGraphics();
+
+            // Desenați panoul pe imaginea tampon
+            content.paint(g2d);
+            g2d.dispose();
+
+            // Afișează un dialog de salvare a fișierului
+            JFileChooser fileChooser = new JFileChooser();
+            fileChooser.setDialogTitle("Save As");
+            fileChooser.setFileFilter(new FileNameExtensionFilter("PNG Images", "png"));
+
+            if (fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION) {
+                // Salvează imaginea în fișierul selectat
+                File fileToSave = fileChooser.getSelectedFile();
+                ImageIO.write(image, "png", fileToSave);
+                // Salvați imaginea tampon în fișierul PNG
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void loadImage() {
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(this);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            BufferedImage image = null;
+            try {
+                image = ImageIO.read(selectedFile);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            JLabel label = new JLabel(new ImageIcon(image));
+            panel.removeAll();
+            panel.add(label);
+            panel.revalidate();
+            panel.repaint();
+        }
+    }
+
+
+
+
+
+}
